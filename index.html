@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ozzie Marketing — We Build Brands That Dominate</title>
+<meta name="description" content="Ozzie Marketing is a full-service digital partner: web design, branding, digital marketing, SEO, and social media management for growing businesses in Houston, TX and beyond." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: #08080b;
+    color: #f2f2f5;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  a { color: inherit; }
+  img { max-width: 100%; display: block; }
+
+  :root {
+    --bg: #08080b;
+    --bg-alt: #101014;
+    --card: #16161d;
+    --card-2: #1c1c25;
+    --border: rgba(255,255,255,0.08);
+    --purple: #9b5cff;
+    --purple-2: #7c3aed;
+    --purple-glow: rgba(155,92,255,0.35);
+    --text: #f2f2f5;
+    --muted: #a1a1ad;
+    --muted-2: #6b6b78;
+  }
+
+  .container { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+  section { padding: 90px 0; }
+  .eyebrow { font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--purple); margin-bottom: 14px; }
+  h1, h2, h3 { font-weight: 800; letter-spacing: -0.5px; }
+  h2 { font-size: clamp(28px, 4.5vw, 44px); margin-bottom: 16px; }
+  .section-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; flex-wrap: wrap; margin-bottom: 48px; }
+  .section-head p { color: var(--muted); max-width: 420px; font-size: 15px; }
+  .accent { color: var(--purple); }
+
+  .btn { display: inline-flex; align-items: center; gap: 8px; font-weight: 700; font-size: 14.5px; padding: 14px 26px; border-radius: 8px; text-decoration: none; border: none; cursor: pointer; font-family: inherit; transition: transform .15s, box-shadow .15s, background .15s, border-color .15s; }
+  .btn-primary { background: linear-gradient(135deg, var(--purple), var(--purple-2)); color: #fff; box-shadow: 0 8px 24px var(--purple-glow); }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 32px var(--purple-glow); }
+  .btn-outline { background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,0.2); }
+  .btn-outline:hover { border-color: rgba(255,255,255,0.5); }
+
+  /* NAV */
+  header { position: sticky; top: 0; z-index: 200; background: rgba(8,8,11,0.85); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
+  nav { display: flex; align-items: center; justify-content: space-between; padding: 16px 24px; max-width: 1180px; margin: 0 auto; }
+  .logo { display: flex; flex-direction: column; text-decoration: none; line-height: 1; }
+  .logo .name { font-size: 19px; font-weight: 900; letter-spacing: 1px; color: #fff; }
+  .logo .sub { font-size: 9px; font-weight: 700; letter-spacing: 2px; color: var(--purple); text-transform: uppercase; margin-top: 3px; }
+  .nav-links { display: flex; align-items: center; gap: 30px; }
+  .nav-links a { font-size: 14px; font-weight: 600; color: var(--muted); text-decoration: none; transition: color .15s; }
+  .nav-links a:hover { color: #fff; }
+  .nav-cta { display: flex; align-items: center; gap: 16px; }
+  .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 6px; }
+  .hamburger span { width: 24px; height: 2px; background: #fff; display: block; }
+  .mobile-menu { display: none; flex-direction: column; gap: 4px; padding: 12px 24px 20px; border-top: 1px solid var(--border); }
+  .mobile-menu a { padding: 10px 0; font-size: 15px; font-weight: 600; color: var(--muted); text-decoration: none; border-bottom: 1px solid var(--border); }
+  .mobile-menu.open { display: flex; }
+
+  @media (max-width: 860px) {
+    .nav-links { display: none; }
+    .nav-cta .btn-primary span.long { display: none; }
+    .hamburger { display: flex; }
+  }
+
+  /* HERO */
+  #hero { position: relative; padding: 90px 0 60px; overflow: hidden; }
+  .hero-glow { position: absolute; top: -200px; right: -150px; width: 600px; height: 600px; border-radius: 50%; background: radial-gradient(circle, var(--purple-glow) 0%, transparent 70%); pointer-events: none; }
+  .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 40px; align-items: center; }
+  .hero-copy h1 { font-size: clamp(36px, 5.5vw, 58px); line-height: 1.05; color: #fff; margin-bottom: 20px; }
+  .hero-copy p.lead { color: var(--muted); font-size: 17px; max-width: 480px; margin-bottom: 32px; }
+  .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 56px; }
+
+  .hero-mark { display: flex; align-items: center; justify-content: center; }
+  .oz-badge {
+    position: relative; width: 320px; height: 320px; max-width: 90vw; display: flex; align-items: center; justify-content: center;
+    border-radius: 32px; background: radial-gradient(circle at 30% 20%, rgba(155,92,255,0.18), rgba(20,20,26,0.9) 60%);
+    border: 1px solid var(--border);
+  }
+  .oz-badge::before {
+    content: ""; position: absolute; inset: -2px; border-radius: 32px; padding: 2px;
+    background: linear-gradient(135deg, var(--purple), transparent 50%, var(--purple-2));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor; mask-composite: exclude; opacity: .6;
+  }
+  .oz-badge .oz-text {
+    font-size: 110px; font-weight: 900; letter-spacing: -4px;
+    background: linear-gradient(160deg, #fff 20%, var(--purple) 100%);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    text-shadow: 0 0 40px var(--purple-glow);
+  }
+
+  .stat-bar { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; }
+  .stat-bar div { background: var(--card); padding: 22px 20px; text-align: center; }
+  .stat-num { display: block; font-size: 26px; font-weight: 800; color: #fff; }
+  .stat-label { font-size: 11.5px; color: var(--muted); text-transform: uppercase; letter-spacing: .5px; }
+  @media (max-width: 700px) { .stat-bar { grid-template-columns: repeat(2, 1fr); } }
+
+  .trust { text-align: center; margin-top: 64px; }
+  .trust p { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted-2); margin-bottom: 24px; }
+  .trust-logos { display: flex; justify-content: center; gap: 44px; flex-wrap: wrap; opacity: .55; font-weight: 800; letter-spacing: 1px; font-size: 15px; }
+
+  @media (max-width: 900px) {
+    .hero-grid { grid-template-columns: 1fr; }
+    .hero-mark { order: -1; margin-bottom: 20px; }
+  }
+
+  /* SERVICES */
+  #services { background: var(--bg-alt); }
+  .services-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 18px; }
+  @media (max-width: 1000px) { .services-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) { .services-grid { grid-template-columns: 1fr; } }
+  .service-card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 26px 22px; transition: border-color .2s, transform .2s; }
+  .service-card:hover { border-color: var(--purple); transform: translateY(-4px); }
+  .service-icon { width: 42px; height: 42px; border-radius: 10px; background: linear-gradient(135deg, var(--purple), var(--purple-2)); display: flex; align-items: center; justify-content: center; font-size: 20px; margin-bottom: 16px; }
+  .service-card h3 { font-size: 16px; margin-bottom: 8px; color: #fff; }
+  .service-card p { font-size: 13.5px; color: var(--muted); margin-bottom: 14px; }
+  .service-card a { font-size: 12.5px; font-weight: 700; color: var(--purple); text-decoration: none; text-transform: uppercase; letter-spacing: .5px; }
+  .view-all { text-align: center; margin-top: 36px; }
+
+  /* PORTFOLIO */
+  .portfolio-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+  @media (max-width: 1000px) { .portfolio-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) { .portfolio-grid { grid-template-columns: 1fr; } }
+  .project-card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; }
+  .project-thumb { height: 170px; background: linear-gradient(135deg, #1c1c25, #2a2a36); display: flex; align-items: center; justify-content: center; font-weight: 800; letter-spacing: 1px; color: var(--muted-2); font-size: 15px; }
+  .project-info { padding: 18px 20px; }
+  .project-info h3 { font-size: 15px; color: #fff; margin-bottom: 4px; }
+  .project-info p { font-size: 12.5px; color: var(--muted); margin-bottom: 10px; }
+  .project-info a { font-size: 12px; font-weight: 700; color: var(--purple); text-decoration: none; }
+
+  /* PROCESS */
+  #process { background: var(--bg-alt); }
+  .process-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 18px; text-align: center; }
+  @media (max-width: 900px) { .process-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) { .process-grid { grid-template-columns: 1fr; } }
+  .process-step .service-icon { margin: 0 auto 16px; }
+  .process-step h3 { font-size: 15px; color: #fff; margin-bottom: 6px; }
+  .process-step p { font-size: 13px; color: var(--muted); }
+
+  /* ABOUT */
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+  @media (max-width: 900px) { .about-grid { grid-template-columns: 1fr; } }
+  .about-list { list-style: none; display: grid; gap: 14px; margin: 24px 0 32px; }
+  .about-list li { display: flex; gap: 12px; align-items: flex-start; font-size: 14.5px; color: var(--muted); }
+  .check { color: var(--purple); font-weight: 900; }
+  .about-visual { background: linear-gradient(160deg, #1c1c25, #0d0d12); border: 1px solid var(--border); border-radius: 16px; padding: 40px 28px; }
+  .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 24px; }
+  .about-stats .stat-num { font-size: 28px; }
+  .about-stats .stat-label { color: var(--muted); }
+
+  /* TESTIMONIAL */
+  #testimonial { text-align: center; }
+  .quote-card { max-width: 700px; margin: 0 auto; background: var(--card); border: 1px solid var(--border); border-radius: 18px; padding: 44px 36px; }
+  .quote-card p { font-size: 19px; color: #f2f2f5; font-style: italic; margin-bottom: 22px; }
+  .quote-attr { font-size: 13.5px; color: var(--muted); }
+  .quote-attr strong { color: #fff; }
+
+  /* FINAL CTA */
+  #final-cta { background: linear-gradient(135deg, #1c0f33, #0d0714); text-align: center; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  #final-cta h2 { color: #fff; }
+  #final-cta p { color: var(--muted); margin-bottom: 30px; }
+  .cta-actions { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
+
+  /* FOOTER */
+  footer { padding: 64px 0 28px; background: #050507; }
+  .footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr 1.2fr; gap: 32px; margin-bottom: 40px; }
+  @media (max-width: 900px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 560px) { .footer-grid { grid-template-columns: 1fr; } }
+  footer h4 { font-size: 12px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--purple); margin-bottom: 16px; }
+  footer ul { list-style: none; display: grid; gap: 10px; }
+  footer ul a { font-size: 13.5px; color: var(--muted); text-decoration: none; }
+  footer ul a:hover { color: #fff; }
+  .footer-brand p { font-size: 13.5px; color: var(--muted); margin: 14px 0 20px; max-width: 260px; }
+  .social-row { display: flex; gap: 10px; }
+  .social-row a { width: 34px; height: 34px; border-radius: 8px; background: var(--card); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; text-decoration: none; font-size: 14px; }
+  .footer-bottom { border-top: 1px solid var(--border); padding-top: 24px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-size: 12.5px; color: var(--muted-2); }
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <a class="logo" href="#hero">
+      <span class="name">OZZIE</span>
+      <span class="sub">Marketing</span>
+    </a>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#work">Our Work</a>
+      <a href="#about">About</a>
+      <a href="#pricing">Plans</a>
+    </div>
+    <div class="nav-cta">
+      <a class="btn btn-primary" href="tel:+13469789849"><span class="long">Book a Call</span><span>→</span></a>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#services">Services</a>
+    <a href="#work">Our Work</a>
+    <a href="#about">About</a>
+    <a href="#pricing">Plans</a>
+  </div>
+</header>
+
+<section id="hero">
+  <div class="hero-glow"></div>
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <div class="eyebrow">Premium Marketing. Powerful Results.</div>
+        <h1>We Build Brands<br>That <span class="accent">Dominate</span></h1>
+        <p class="lead">Ozzie Marketing is your full-service digital partner. We design, build, and scale powerful online experiences that generate real growth.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="tel:+13469789849">Get a Free Strategy Call →</a>
+          <a class="btn btn-outline" href="#work">Explore Our Work ▸</a>
+        </div>
+      </div>
+      <div class="hero-mark">
+        <div class="oz-badge"><span class="oz-text">OZ</span></div>
+      </div>
+    </div>
+
+    <div class="stat-bar" style="margin-top:56px;">
+      <div><span class="stat-num">200+</span><span class="stat-label">Projects Completed</span></div>
+      <div><span class="stat-num">98%</span><span class="stat-label">Client Satisfaction</span></div>
+      <div><span class="stat-num">5+</span><span class="stat-label">Years of Experience</span></div>
+      <div><span class="stat-num">24/7</span><span class="stat-label">Dedicated Support</span></div>
+    </div>
+
+    <div class="trust">
+      <p>Trusted by businesses worldwide</p>
+      <!-- REPLACE: swap these for your real client names/logos -->
+      <div class="trust-logos">
+        <span>LUXE AUTO SPA</span>
+        <span>TRIDENT HOME BUYERS</span>
+        <span>KXNG FITNESS</span>
+        <span>SAC EXTERIORS</span>
+        <span>BOS CLEANING</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">What We Do</div>
+        <h2>Full-Service Digital Solutions</h2>
+      </div>
+      <p>Everything your business needs to establish, grow, and scale in the digital world.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">🖥️</div>
+        <h3>Web Design &amp; Development</h3>
+        <p>High-performance websites that look amazing and convert visitors into customers.</p>
+        <a href="#">Learn More →</a>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🎨</div>
+        <h3>Branding &amp; Identity</h3>
+        <p>Memorable brands that stand out and build trust with your audience.</p>
+        <a href="#">Learn More →</a>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📣</div>
+        <h3>Digital Marketing &amp; Ads</h3>
+        <p>Data-driven campaigns that generate leads and maximize ROI.</p>
+        <a href="#">Learn More →</a>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📈</div>
+        <h3>SEO &amp; Growth Strategy</h3>
+        <p>Rank higher, get found, and grow your business organically.</p>
+        <a href="#">Learn More →</a>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📱</div>
+        <h3>Social Media Management</h3>
+        <p>Engaging content and strategies that grow your brand online.</p>
+        <a href="#">Learn More →</a>
+      </div>
+    </div>
+    <div class="view-all"><a class="btn btn-outline" href="#">View All Services →</a></div>
+  </div>
+</section>
+
+<section id="work">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Our Work</div>
+        <h2>Results That Speak</h2>
+      </div>
+      <p>Real projects. Real clients. Real results. Take a look at what we've built.</p>
+    </div>
+    <!-- REPLACE: swap in screenshots of your real projects -->
+    <div class="portfolio-grid">
+      <div class="project-card">
+        <div class="project-thumb">LUXE AUTO SPA</div>
+        <div class="project-info">
+          <h3>Luxe Auto Spa</h3>
+          <p>Website Design &amp; SEO</p>
+          <a href="#">View Project →</a>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-thumb">TRIDENT HOME BUYERS</div>
+        <div class="project-info">
+          <h3>Trident Home Buyers</h3>
+          <p>Website Design &amp; Branding</p>
+          <a href="#">View Project →</a>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-thumb">KXNG FITNESS</div>
+        <div class="project-info">
+          <h3>KXNG Fitness</h3>
+          <p>Website Design &amp; Development</p>
+          <a href="#">View Project →</a>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-thumb">SAC EXTERIORS</div>
+        <div class="project-info">
+          <h3>SAC Exteriors</h3>
+          <p>Website Design &amp; Marketing</p>
+          <a href="#">View Project →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="process">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Our Process</div>
+        <h2>A Proven System for Success</h2>
+      </div>
+    </div>
+    <div class="process-grid">
+      <div class="process-step">
+        <div class="service-icon">🔍</div>
+        <h3>Discover</h3>
+        <p>We learn about your business, goals, and target audience.</p>
+      </div>
+      <div class="process-step">
+        <div class="service-icon">🧭</div>
+        <h3>Strategize</h3>
+        <p>We create a custom plan designed to get you results.</p>
+      </div>
+      <div class="process-step">
+        <div class="service-icon">🛠️</div>
+        <h3>Design &amp; Build</h3>
+        <p>We design, build, and refine until everything is perfect.</p>
+      </div>
+      <div class="process-step">
+        <div class="service-icon">🚀</div>
+        <h3>Launch</h3>
+        <p>We launch your project and make sure everything runs smoothly.</p>
+      </div>
+      <div class="process-step">
+        <div class="service-icon">📊</div>
+        <h3>Grow</h3>
+        <p>We scale your brand with strategies that drive real growth.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div>
+        <div class="eyebrow">Why Choose Us</div>
+        <h2>Built Different.<br>Built for Results.</h2>
+        <p style="color:var(--muted);">We don't just build websites — we build relationships and long-term growth.</p>
+        <ul class="about-list">
+          <li><span class="check">✓</span> Custom solutions tailored to your business</li>
+          <li><span class="check">✓</span> Transparent communication &amp; reporting</li>
+          <li><span class="check">✓</span> Results-driven strategies that scale</li>
+          <li><span class="check">✓</span> Dedicated support whenever you need us</li>
+        </ul>
+        <a class="btn btn-outline" href="#">About Ozzie Marketing →</a>
+      </div>
+      <div class="about-visual">
+        <!-- REPLACE: swap for a real team/founder photo -->
+        <div class="about-stats">
+          <div><span class="stat-num">200+</span><span class="stat-label">Happy Clients</span></div>
+          <div><span class="stat-num">2M+</span><span class="stat-label">Leads Generated</span></div>
+          <div><span class="stat-num">$50M+</span><span class="stat-label">Revenue Generated</span></div>
+          <div><span class="stat-num">100%</span><span class="stat-label">Commitment</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="testimonial">
+  <div class="container">
+    <!-- REPLACE: swap in a real client quote -->
+    <div class="quote-card">
+      <p>"They completely transformed our online presence. The results have been unreal!"</p>
+      <div class="quote-attr"><strong>Mike Johnson</strong> — Luxe Auto Spa &nbsp;★★★★★</div>
+    </div>
+  </div>
+</section>
+
+<section id="final-cta">
+  <div class="container">
+    <div class="eyebrow">Let's Talk</div>
+    <h2>Ready to Take Your Business to the Next Level?</h2>
+    <p>Let's build something powerful together.</p>
+    <div class="cta-actions">
+      <a class="btn btn-primary" href="tel:+13469789849">Book a Free Call →</a>
+      <a class="btn btn-outline" href="#pricing">View Pricing Plans ›</a>
+    </div>
+  </div>
+</section>
+
+<footer id="pricing">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo"><span class="name">OZZIE</span><span class="sub">Marketing</span></div>
+        <p>Premium digital solutions that help businesses grow, scale, and dominate online.</p>
+        <div class="social-row">
+          <!-- REPLACE: add your real social media URLs -->
+          <a href="#" aria-label="Facebook">FB</a>
+          <a href="#" aria-label="Instagram">IG</a>
+          <a href="#" aria-label="LinkedIn">IN</a>
+          <a href="#" aria-label="YouTube">YT</a>
+        </div>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#work">Our Work</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#pricing">Plans</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#">Web Design</a></li>
+          <li><a href="#">Branding</a></li>
+          <li><a href="#">Digital Marketing</a></li>
+          <li><a href="#">SEO</a></li>
+          <li><a href="#">Social Media</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Case Studies</a></li>
+          <li><a href="#">FAQs</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Refund Policy</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Let's Talk</h4>
+        <ul>
+          <li><a href="tel:+13469789849">📞 (346) 978-9849</a></li>
+          <li><a href="mailto:info@ozziemarketing.com">✉️ info@ozziemarketing.com</a></li>
+          <li>📍 Houston, TX</li>
+        </ul>
+        <a class="btn btn-primary" style="margin-top:16px;" href="tel:+13469789849">Book a Call →</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Ozzie Marketing. All rights reserved.</span>
+      <span>Built with passion. Driven by results.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const btn = document.getElementById('hamburgerBtn');
+  const menu = document.getElementById('mobileMenu');
+  btn.addEventListener('click', () => menu.classList.toggle('open'));
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.remove('open')));
+</script>
+
+</body>
+</html>
