@@ -1,6 +1,6 @@
 # Ozzie Marketing — Website
 
-Single-page marketing site for Ozzie Marketing (Houston, TX), built to match the
+Single-page marketing site for Ozzie Marketing (Commerce, CA), built to match the
 dark/purple agency design mockup. Everything lives in one file: **`index.html`**.
 
 ## How to upload / host it
@@ -16,9 +16,9 @@ Pick whichever is easiest for you:
 
 Pulled directly from the design mockup:
 - Business name: **Ozzie Marketing**
-- Phone: **(346) 978-9849**
+- Phone: **(323) 338-1562**
 - Email: **info@ozziemarketing.com**
-- Location: **Houston, TX**
+- Location: **Commerce, CA**
 - All copy, services, process steps, and stats from the design
 
 ## What I still need from you to finish personalizing it
